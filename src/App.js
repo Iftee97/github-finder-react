@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/layout/Navbar'
 
 const App = () => {
   return (
     <Router>
-      <h1>Hell with the world</h1>
-      <button className="btn">submit</button>
+      <div className='flex flex-col justify-between h-screen'>
+        <Navbar />
+
+        <main>Content</main>
+      </div>
     </Router>
   )
 }
