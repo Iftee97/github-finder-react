@@ -4,10 +4,7 @@ import UserItem from "./UserItem"
 import GithubContext from "../../context/github/GithubContext"
 
 const UserResults = () => {
-  const {
-    users,
-    loading
-  } = useContext(GithubContext)
+  const { users, loading } = useContext(GithubContext)
 
   if (loading) {
     return <Spinner />

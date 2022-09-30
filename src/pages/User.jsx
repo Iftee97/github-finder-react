@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react'
-import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
-import GithubContext from '../context/github/GithubContext'
 import { Link, useParams } from 'react-router-dom'
+import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
 import Spinner from '../components/layout/Spinner'
 import RepoList from '../components/repos/RepoList'
+import GithubContext from '../context/github/GithubContext'
+import { getUser, getUserRepos } from '../context/github/GithubActions'
 
 const User = () => {
   const { login } = useParams()
@@ -12,14 +13,21 @@ const User = () => {
     user,
     repos,
     loading,
-    getUser,
-    getUserRepos
+    dispatch
   } = useContext(GithubContext)
 
   useEffect(() => {
-    getUser(login)
-    getUserRepos(login)
-  }, [])
+    dispatch({ type: "SET_LOADING" })
+
+    const getUserData = async () => {
+      const userData = await getUser(login)
+      dispatch({ type: "GET_USER", payload: userData })
+
+      const userRepoData = await getUserRepos(login)
+      dispatch({ type: "GET_REPOS", payload: userRepoData })
+    }
+    getUserData()
+  }, [dispatch, login])
 
   const {
     name,
@@ -58,8 +66,8 @@ const User = () => {
                 <img src={avatar_url} alt='' />
               </figure>
               <div className='card-body justify-end'>
-                <h2 className='card-title mb-0'>{name}</h2>
-                <p>{login}</p>
+                <h2 className='text-white card-title mb-0'>{name}</h2>
+                <p className='text-white'>{login}</p>
               </div>
             </div>
           </div>
