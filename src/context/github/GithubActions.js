@@ -1,6 +1,6 @@
-// import axios from 'axios'
 const GITHUB_URL = process.env.REACT_APP_GITHUB_URL
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
+
 
 // get search results - users
 export const searchUsers = async (text) => {
@@ -12,6 +12,7 @@ export const searchUsers = async (text) => {
   const data = await response.json()
   return data
 }
+
 
 // get single user 
 export const getUser = async (login) => {
@@ -28,6 +29,7 @@ export const getUser = async (login) => {
     return data
   }
 }
+
 
 // get user repos
 export const getUserRepos = async (login) => {
