@@ -12,7 +12,7 @@ export const GithubProvider = ({ children }) => {
     loading: false
   })
 
-  // get search results
+  // get users search results
   const searchUsers = async (text) => {
     dispatch({ type: "SET_LOADING" })
 
@@ -30,6 +30,7 @@ export const GithubProvider = ({ children }) => {
     })
   }
 
+  // clear users search results
   const clearUsers = () => {
     dispatch({ type: "CLEAR_USERS" })
   }
