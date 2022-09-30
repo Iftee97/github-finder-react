@@ -30,11 +30,15 @@ export const GithubProvider = ({ children }) => {
     })
   }
 
+  const clearUsers = () => {
+    dispatch({ type: "CLEAR_USERS" })
+  }
+
   return (
     <GithubContext.Provider value={{
       ...state,
-      dispatch,
-      searchUsers
+      searchUsers,
+      clearUsers
     }}>
       {children}
     </GithubContext.Provider>
