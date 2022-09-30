@@ -4,7 +4,11 @@ import AlertContext from '../../context/alert/AlertContext'
 
 const UserSearch = () => {
   const [text, setText] = useState('')
-  const { users, searchUsers, clearUsers } = useContext(GithubContext)
+  const {
+    users,
+    searchUsers,
+    clearUsers
+  } = useContext(GithubContext)
   const { setAlert } = useContext(AlertContext)
 
   const handleSubmit = (e) => {
